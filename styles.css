@@ -1,0 +1,51 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  background-color: #eeeeee;
+  margin: 0px;
+}
+
+div {
+  padding: 15px;
+}
+
+h1 {
+  font-size: 50px;
+  font-family: 'Bungee', Impact, cursive;
+  text-shadow: 2px 2px black;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.game-item {
+  flex-basis: 20%;
+  min-width: 200px;
+  align-content: center;
+}
+
+.preview {
+  max-width: 90%;
+  max-height: 90%;
+  padding: 10px;
+  background-color: white;
+}
+
+.purple {
+  background-color: #673ab7;
+}
+
+.third {
+  height: 30vh;
+}
+
+.vertical-center {
+  margin-top: 10vh;
+}
+
+.white {
+  color: white;
+}
