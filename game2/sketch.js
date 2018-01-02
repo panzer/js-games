@@ -17,7 +17,7 @@ setup = function() {
 }
 
 reset = function() {
-  sliders = [new Slider(100.0, 200.0, I, 0.0, H)];
+  sliders = [new Slider(0, WIDTH, I, 0.0, H)];
   active = new Slider(100.0, 200.0, I - H, 2.0, H);
 }
 
