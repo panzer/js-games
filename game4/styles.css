@@ -1,0 +1,21 @@
+body {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  background-color: #44AAEE;
+}
+
+h1 {
+  font-family: Impact;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+#gameContainer {
+  margin: 30px;
+}
+
+#game {
+  border-style: solid;
+  border-width:6px;
+  border-color:#FFF;
+}
