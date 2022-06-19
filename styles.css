@@ -24,6 +24,7 @@ h1 {
 .game-item {
   flex-basis: 20%;
   min-width: 200px;
+  aspect-ratio: 1;
   align-content: center;
 }
 
