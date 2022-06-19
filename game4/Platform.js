@@ -7,12 +7,12 @@ function Platform(x, y, speed, w, h) {
   this.show = function() {
     push();
     rect(this.pos.x, this.pos.y, this.w, this.h);
-    for (var i = 0; i < this.w; i+=2) {
-      let val = this.pos.x + i;
-      let ang = map(val, this.pos.x, this.pos.x + this.w, -30, 80);
-      let d = createVector(0, -12).rotate(ang);
-      line(val, this.pos.y, val + d.x, this.pos.y + d.y);
-    }
+    // for (var i = 0; i < this.w; i+=2) {
+    //   let val = this.pos.x + i;
+    //   let ang = map(val, this.pos.x, this.pos.x + this.w, -30, 80);
+    //   let d = createVector(0, -12).rotate(ang);
+    //   line(val, this.pos.y, val + d.x, this.pos.y + d.y);
+    // }
     pop();
   }
   

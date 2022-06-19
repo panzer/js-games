@@ -1,12 +1,16 @@
+const BALL_COOLDOWN = 5;
+
 function Ball(x, y, r, v) {
   this.pos = createVector(x, y);
   this.vel = v || createVector();
   this.rad = r || 10;
+  this.cooldown = BALL_COOLDOWN;
 
   this.show = function() {
     push();
     fill('white');
     ellipse(this.pos.x, this.pos.y, this.rad * 2, this.rad * 2);
+    // text(this.cooldown, this.pos.x, this.pos.y + 15)
     pop();
   };
 
@@ -30,6 +34,7 @@ function Ball(x, y, r, v) {
       this.vel.x *= -1;
       this.pos.x = this.rad;
     }
+    if (this.cooldown > 0) this.cooldown--;
   };
 
   this.hitBlock = function(b) {
@@ -37,7 +42,9 @@ function Ball(x, y, r, v) {
     let res = false;
     let p_closest;  // closest point to center
     let closest_dist;
-    for (p of this.nRadialPoints(16, false)) {
+    if (this.cooldown > 0) return false;
+
+    for (p of this.nRadialPoints(4, false)) {
       if (b.pointWithin(p)) {
         res = true;
         if (p_closest === undefined) {
@@ -60,7 +67,9 @@ function Ball(x, y, r, v) {
       let ma = this.vel.dot(desired) * 2;
       desired.mult(ma);
       this.vel.sub(desired);
-      print("ovel: " + oVel + " nvel: " + this.vel);
+    }
+    if (res === true) {
+      this.cooldown = BALL_COOLDOWN;
     }
     return res;
   }

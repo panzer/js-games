@@ -1,4 +1,4 @@
-const DEFAULT_COOL = 20;
+const DEFAULT_COOL = 0;
 
 function Block(x, y, hp, w, h) {
   this.pos = createVector(x, y);
@@ -13,8 +13,8 @@ function Block(x, y, hp, w, h) {
     fill(0, b, b); //rgb
     rectMode(CENTER);
     rect(this.pos.x, this.pos.y, this.w, this.h);
-    fill("white");
-    text(this.cooldown, this.pos.x, this.pos.y);
+    // fill("white");
+    // text(this.cooldown, this.pos.x, this.pos.y);
     pop();
     if (this.cooldown > 0) {
       this.cooldown--;
