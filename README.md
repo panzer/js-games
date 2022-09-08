@@ -11,6 +11,9 @@ Try to keep the moving blocks lined up with each other and reach the top of the 
 ### Bounce It
 Keep the ball within the circle by moving the paddle around. Be careful! The controls are tricky!
 
+### Block Breaker
+Destroy all the rectangles with your trusty projectile.
+
 ## Special Thanks To
 The [p5.js](p5js.org) library
 
