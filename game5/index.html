@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Tertiary</title>
+    <script lang="javascipt" src="../libraries/p5.js"></script>
+    <script lang="javascipt" src="./model/ModelColor.js"></script>
+    <script lang="javascipt" src="./view/ViewColor.js"></script>
+    <script lang="javascipt" src="Triangle.js"></script>
+    <script lang="javascipt" src="sketch.js"></script>
+  </head>
+
+  <body">
+    <!--<link href="https://fonts.googleapis.com/css?family=Bungee|Roboto:400,500" rel="stylesheet">-->
+    <link href="../button.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+
+    <h1>Tertiary</h1>
+
+    <p>
+      Like Minesweeper, try to reveal the whole board without flipping certain
+      tiles. In this game, upward pointing triangles are always primary colors,
+      and downward pointed triangles determine their color from the triangles
+      which share an edge. Red and yellow make orange. Blue and yellow make
+      green. Red and blue make purple. But, all three as neighbors to a downward
+      pointed triangle makes brown - a Tertiary color. Reveal all triangles
+      except the Teriary ones, and you win. Alternate selecting up & down
+      pointing triangles. In the endgame, when the only downward triangles remaining
+      are Tertiary, reveal all upward triangles to stop the clock.
+    </p>
+    
+
+    <div id="gameContainer"></div>
+
+    <h3>Controls</h3>
+    <p>
+      <li><b>R = </b>Restart/New Game</li>
+    </p>
+    <br/>
+
+    <a href="../index.html"> home </a>
+  </body>
+</html>
