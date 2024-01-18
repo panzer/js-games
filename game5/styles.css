@@ -18,6 +18,11 @@ body {
   
   #gameContainer {
     margin: 30px;
+  
+    @media screen and (min-device-width: 812px) {
+      max-width: 400px;
+    }
+    
   }
   
   #game {

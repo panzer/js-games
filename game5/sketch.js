@@ -90,6 +90,11 @@ function setup() {
   let canv = createCanvas(400, 600);
   canv.parent("gameContainer");
   canv.id("game");
+  console.log(canv);
+  canv.elt.style["aspect-ratio"] = "4/6";
+  canv.elt.style["width"] = "auto";
+  canv.elt.style["height"] = "auto";
+  canv.elt.style["max-width"] = "-webkit-fill-available";
   textAlign(CENTER);
   build_board();
 }
