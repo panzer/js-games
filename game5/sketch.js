@@ -1,3 +1,6 @@
+// globals
+let canv = null;
+
 // game config
 const rows = 6;
 const cols = 7; // should be odd and >=3
@@ -17,6 +20,7 @@ let num_revealed = 0; // incremented throughout the game
 let num_downs = 0; // incremented throughout the game
 let start_time = null; // set on the first triangle reveal
 let total_time = null; // set on last triangle reveal
+let did_lose = false;
 
 function initialize_state() {
   triangles = [];
@@ -26,6 +30,7 @@ function initialize_state() {
   num_downs = 0; // incremented throughout the game
   start_time = null; // set on the first triangle reveal
   total_time = null; // set on last triangle reveal
+  did_lose = false;
 }
 
 function build_board() {
@@ -86,11 +91,17 @@ function build_board() {
   }
 }
 
+function transformedMousePoint() {
+  return {
+    x: mouseX * (width / canv.elt.scrollWidth),
+    y: mouseY * (height / canv.elt.scrollHeight),
+  };
+}
+
 function setup() {
-  let canv = createCanvas(400, 600);
+  canv = createCanvas(400, 600);
   canv.parent("gameContainer");
   canv.id("game");
-  console.log(canv);
   canv.elt.style["aspect-ratio"] = "4/6";
   canv.elt.style["width"] = "auto";
   canv.elt.style["height"] = "auto";
@@ -120,12 +131,28 @@ function draw() {
   }
   fill(text_color);
   let timer = getTimeString();
+  text(12);
   if (turn_type === TRI_DOWN) text("This Turn: DOWN" + timer, width / 2, 15);
   if (turn_type === TRI_UP) text("This Turn: UP" + timer, width / 2, 15);
+  if (did_lose) {
+    push();
+    textSize(24);
+    strokeWeight(4);
+    stroke(255);
+    fill(0);
+    text("GAME OVER, YOU LOST :(", width / 2, height / 3);
+    pop();
+  }
 }
 
 function mouseClicked() {
-  let p = createVector(mouseX, mouseY);
+  // when game over, click means restart
+  if (total_time) {
+    build_board();
+    return;
+  }
+  let tx = transformedMousePoint();
+  let p = createVector(tx.x, tx.y);
   for (let i = 0; i < triangles.length; i++) {
     let t = triangles[i];
     if (t.contains(p)) {
@@ -137,7 +164,15 @@ function mouseClicked() {
         //   total_downs - num_tertiaries - num_downs
         // );
         // console.log("Num Ter:", num_tertiaries);
-        if (t.direction === TRI_DOWN) num_downs++;
+        if (t.direction === TRI_DOWN) {
+          if (t.fillColor === "brown") {
+            did_lose = true;
+            total_time = millis() - start_time;
+          } else {
+            num_downs++;
+          }
+        }
+
         if (num_downs < total_downs - num_tertiaries)
           // there are non-tertiary downs remaining
           turn_type *= -1; // assumes this is the right way to swap to the next turn state
