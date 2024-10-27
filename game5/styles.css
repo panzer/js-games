@@ -15,6 +15,17 @@ body {
     -webkit-background-clip: text;
     -webkit-text-stroke: 8px transparent;
   }
+
+  p {
+    font-weight: normal;
+  }
+
+  .mixing-example {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+  }
   
   #gameContainer {
     margin: 30px;

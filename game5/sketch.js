@@ -19,7 +19,7 @@ let num_tertiaries = 0; // to be determined during game generation
 let num_revealed = 0; // incremented throughout the game
 let num_downs = 0; // incremented throughout the game
 let start_time = null; // set on the first triangle reveal
-let total_time = null; // set on last triangle reveal
+let total_time = null; // set on last triangle reveal (indicates win)
 let did_lose = false;
 
 function initialize_state() {
@@ -141,6 +141,15 @@ function draw() {
     stroke(255);
     fill(0);
     text("GAME OVER, YOU LOST :(", width / 2, height / 3);
+    pop();
+  } else if (total_time) {
+    push();
+    textSize(24);
+    strokeWeight(4);
+    stroke(155, 255, 155);
+    fill(0);
+    text("YOU WON :D", width / 2, height / 3);
+    text(timer, width / 2, height / 3 + 30);
     pop();
   }
 }

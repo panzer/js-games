@@ -8,27 +8,186 @@
     <script lang="javascipt" src="sketch.js"></script>
   </head>
 
-  <body">
+  <body>
     <!--<link href="https://fonts.googleapis.com/css?family=Bungee|Roboto:400,500" rel="stylesheet">-->
     <link href="../button.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
 
     <h1>Tertiary</h1>
-
-    <p>
-      Like Minesweeper, try to reveal the whole board without flipping certain
-      tiles. In this game, upward pointing triangles are always primary colors,
-      and downward pointed triangles determine their color from the triangles
-      which share an edge. Red and yellow make orange. Blue and yellow make
-      green. Red and blue make purple. But, all three as neighbors to a downward
-      pointed triangle makes brown - a Tertiary color. Reveal all triangles
-      except the Teriary ones, and you win. Alternate selecting up & down
-      pointing triangles. In the endgame, when the only downward triangles remaining
-      are Tertiary, reveal all upward triangles to stop the clock.
-    </p>
-    
-
-    <div id="gameContainer"></div>
+    <div id="gameContainer" style="margin: auto; text-align: center;"></div>
+    <div style="max-width: 30em; margin: auto;">
+      <p>
+        Like Minesweeper, try to reveal the whole board without flipping certain
+        tiles. In this game:
+        <li><strong><svg width="2em" height="2em" viewBox="0 0 100 100">
+          <!-- Upward -->
+          <polygon points="50,0 0,86.6 100,86.6" style="fill:white;" />
+        </svg> upward</strong> pointing triangles are always primary colors, and</li>
+        <li><strong><svg width="2em" height="2em" viewBox="0 0 100 100">
+          <!-- Downward -->
+          <polygon points="50,86.6 0,0 100,0" style="fill:white;" />
+        </svg> downward</strong> pointed triangles determine their color from the triangles
+          which share an edge</li>
+        <hr>
+        <li class="mixing-example">
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:red;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:yellow;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:yellow;" />
+          </svg>
+          =
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Downward -->
+            <polygon points="50,86.6 0,0 100,0" style="fill:orange;" />
+          </svg>
+        </li>
+        <li class="mixing-example">
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:red;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:red;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:yellow;" />
+          </svg>
+          =
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Downward -->
+            <polygon points="50,86.6 0,0 100,0" style="fill:orange;" />
+          </svg>
+        </li>
+        <li class="mixing-example">
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:blue;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:red;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:red;" />
+          </svg>
+          =
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Downward -->
+            <polygon points="50,86.6 0,0 100,0" style="fill:purple;" />
+          </svg>
+        </li>
+        <li class="mixing-example">
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:blue;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:blue;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:red;" />
+          </svg>
+          =
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Downward -->
+            <polygon points="50,86.6 0,0 100,0" style="fill:purple;" />
+          </svg>
+        </li>
+        <li class="mixing-example">
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:yellow;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:blue;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:blue;" />
+          </svg>
+          =
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Downward -->
+            <polygon points="50,86.6 0,0 100,0" style="fill:green;" />
+          </svg>
+        </li>
+        <li class="mixing-example">
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:yellow;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:yellow;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:blue;" />
+          </svg>
+          =
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Downward -->
+            <polygon points="50,86.6 0,0 100,0" style="fill:green;" />
+          </svg>
+        </li>
+        Red and yellow make orange. Blue and yellow make
+        green. Red and blue make purple.
+        <hr>
+        <li class="mixing-example">
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:red;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:yellow;" />
+          </svg>
+          +
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Upward -->
+            <polygon points="50,0 0,86.6 100,86.6" style="fill:blue;" />
+          </svg>
+          =
+          <svg width="2em" height="2em" viewBox="0 0 100 100">
+            <!-- Downward -->
+            <polygon points="50,86.6 0,0 100,0" style="fill:brown;" />
+          </svg>
+        </li>
+        But, all three as neighbors to a downward
+        pointed triangle makes brown - a Tertiary color.
+        <hr>
+        <strong>Goal:</strong> Reveal all triangles
+        except the Teriary ones, and you win. Alternate selecting up & down
+        pointing triangles. In the endgame, when the only downward triangles remaining
+        are Tertiary, reveal all upward triangles to stop the clock.
+      </p>
+    </div>
 
     <h3>Controls</h3>
     <p>
